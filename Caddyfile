@@ -1,0 +1,26 @@
+{
+	# Optional: global Caddy options can be injected with CADDY_GLOBAL_OPTIONS
+	# (you already set SERVER_NAME="http://" to disable HTTPS for dev)
+}
+
+{$SERVER_NAME} {
+	# Serve the Laravel public directory
+	root * /app/public
+
+	# Compression
+	encode zstd gzip
+
+	# Deny all dotfiles (e.g., .htaccess, .git, .env if it were under public)
+	@dotfiles path */.*
+	respond @dotfiles 404
+
+	# Double-lock some common sensitive files by name (defense-in-depth)
+	file_server {
+		hide Caddyfile
+		hide .env
+		hide */.*
+	}
+
+	# Route PHP through FrankenPHP
+	php_server
+}
