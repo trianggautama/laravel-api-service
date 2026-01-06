@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\QuestionController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -30,5 +31,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
         Route::get('/users', [AdminController::class, 'users'])->name('users');
         Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
+        
+        // Questions CRUD routes
+        Route::resource('questions', QuestionController::class);
     });
 });

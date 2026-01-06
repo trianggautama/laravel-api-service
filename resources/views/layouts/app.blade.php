@@ -34,6 +34,7 @@
                                     <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
                                     <a href="{{ route('admin.users') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Users</a>
                                     <a href="{{ route('admin.posts') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Posts</a>
+                                    <a href="{{ route('admin.questions.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Questions</a>
                                 </div>
                             </div>
                         @endif
