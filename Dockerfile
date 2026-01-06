@@ -12,7 +12,7 @@ COPY . .
 
 RUN bun --bun run build
 
-FROM dunglas/frankenphp
+FROM dunglas/frankenphp:php8.4.15
 
 # Set Caddy server name to "http://" to serve on 80 and not 443
 # Read more: https://frankenphp.dev/docs/config/#environment-variables
@@ -39,7 +39,7 @@ RUN echo "opcache.enable=1" > /usr/local/etc/php/conf.d/custom.ini \
     && echo "opcache.jit=tracing" >> /usr/local/etc/php/conf.d/custom.ini \
     && echo "opcache.jit_buffer_size=256M" >> /usr/local/etc/php/conf.d/custom.ini \
     && echo "memory_limit=512M" > /usr/local/etc/php/conf.d/custom.ini \
-    && echo "upload_max_filesize=5M" >> /usr/local/etc/php/conf.d/custom.ini \
+    && echo "upload_max_filesize=8M" >> /usr/local/etc/php/conf.d/custom.ini \
     && echo "post_max_size=5M" >> /usr/local/etc/php/conf.d/custom.ini \
     && echo "max_execution_time=100" >> /usr/local/etc/php/conf.d/custom.ini
 
