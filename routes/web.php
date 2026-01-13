@@ -21,10 +21,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Protected routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/profile/regenerate-api-key', [ProfileController::class, 'regenerateApiKey'])->name('profile.regenerate-api-key');
     
     // Posts routes
     Route::resource('posts', PostController::class);
+    
+    // User quiz results routes
+    Route::get('/quiz-results', [ProfileController::class, 'quizResults'])->name('user.quiz-results');
+    Route::get('/quiz-results/{id}', [ProfileController::class, 'quizResultDetail'])->name('user.quiz-results.show');
     
     // Admin routes
     Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
@@ -34,5 +39,9 @@ Route::middleware('auth')->group(function () {
         
         // Questions CRUD routes
         Route::resource('questions', QuestionController::class);
+        
+        // Quiz Results routes
+        Route::get('/quiz-results', [AdminController::class, 'quizResults'])->name('quiz-results.index');
+        Route::get('/quiz-results/{id}', [AdminController::class, 'quizResultDetail'])->name('quiz-results.show');
     });
 });

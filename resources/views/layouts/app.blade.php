@@ -35,10 +35,12 @@
                                     <a href="{{ route('admin.users') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Users</a>
                                     <a href="{{ route('admin.posts') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Posts</a>
                                     <a href="{{ route('admin.questions.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Questions</a>
+                                    <a href="{{ route('admin.quiz-results.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Quiz Results</a>
                                 </div>
                             </div>
                         @endif
                         <a href="{{ route('posts.index') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Posts</a>
+                        <a href="{{ route('user.quiz-results') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Quiz Results</a>
                         <a href="{{ route('profile') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Profile</a>
                         <form action="{{ route('logout') }}" method="POST" class="inline">
                             @csrf

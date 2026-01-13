@@ -24,6 +24,12 @@ class User extends Authenticatable
         'password',
         'api_key',
         'role',
+        'photo',
+        'npm',
+        'birth_place',
+        'birth_date',
+        'address',
+        'gender',
     ];
 
     /**
@@ -45,6 +51,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'birth_date' => 'datetime',
             'password' => 'hashed',
         ];
     }
@@ -80,5 +87,13 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Get the quiz results for the user.
+     */
+    public function quizResults()
+    {
+        return $this->hasMany(QuizResult::class);
     }
 }

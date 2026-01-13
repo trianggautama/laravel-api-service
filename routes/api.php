@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\QuestionController;
+use App\Http\Controllers\Api\QuizController;
+use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\ApiQuizController;
 
 // API routes with Bearer token authentication
 Route::middleware('api.auth')->group(function () {
@@ -15,4 +18,8 @@ Route::middleware('api.auth')->group(function () {
     
     // Questions routes
     Route::get('/questions/random', [QuestionController::class, 'getRandom']);
+    Route::post('/quiz/submit', [QuizController::class, 'quizSubmitHandle'])->name('quiz.submit');
+    
+    // Profile routes
+    Route::get('/profile', [ProfileController::class, 'show']);
 });
